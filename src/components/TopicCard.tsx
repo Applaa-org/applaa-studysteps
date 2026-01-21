@@ -25,36 +25,6 @@ export function TopicCard({ topic }: TopicCardProps) {
             {topic.difficulty}
           </Badge>
           <div className="flex items-center text-sm text-gray-500">
-            <Clock size={
-
-<applaa-write path="src/components/TopicCard.tsx" description="Topic card component for study topics">
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
-import { Clock, BookOpen, Star } from "lucide-react";
-import { StudyTopic } from "@/data/studyTopics";
-import { Link } from "@tanstack/react-router";
-
-interface TopicCardProps {
-  topic: StudyTopic;
-}
-
-export function TopicCard({ topic }: TopicCardProps) {
-  const difficultyColors = {
-    beginner: "bg-green-100 text-green-800",
-    intermediate: "bg-yellow-100 text-yellow-800",
-    advanced: "bg-red-100 text-red-800"
-  };
-
-  return (
-    <Card className="h-full hover:shadow-lg transition-shadow duration-300">
-      <CardHeader className="pb-3">
-        <div className="flex justify-between items-start mb-2">
-          <Badge className={difficultyColors[topic.difficulty]}>
-            {topic.difficulty}
-          </Badge>
-          <div className="flex items-center text-sm text-gray-500">
             <Clock size={14} className="mr-1" />
             {topic.estimatedDuration}
           </div>
@@ -100,7 +70,7 @@ export function TopicCard({ topic }: TopicCardProps) {
       </CardContent>
       
       <CardFooter>
-        <Link to={`/topic/${topic.id}`} className="w-full">
+        <Link to="/topic/$topicId" params={{ topicId: topic.id.toString() }} className="w-full">
           <Button className="w-full">
             {topic.progress > 0 ? 'Continue Learning' : 'Start Learning'}
           </Button>
